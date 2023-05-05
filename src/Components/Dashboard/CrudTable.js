@@ -94,9 +94,10 @@ function HomePage() {
   const peticionGet = async () => {
     setLoading(true);
     axios
-      .get(`http://localhost:5000/products/?_page=${page}`)
+      .get(`https://backenddata-tflk.onrender.com/products/?_page=${page}`)
       .then((res) => {
         setData(res.data);
+        console.log(res);
       })
       .finally(() => {
         setLoading(false);
@@ -106,7 +107,10 @@ function HomePage() {
   const peticionPost = async () => {
     setLoading(true);
     axios
-      .post("http://localhost:5000/products/", consolaSeleccionada)
+      .post(
+        "https://backenddata-tflk.onrender.com/products/",
+        consolaSeleccionada
+      )
       .then((res) => {
         setData(data.concat(res.data));
         abrirCerrarModalInsertar();
@@ -120,7 +124,8 @@ function HomePage() {
     setLoading(true);
     axios
       .put(
-        "http://localhost:5000/products/" + consolaSeleccionada.id,
+        "https://backenddata-tflk.onrender.com/products/" +
+          consolaSeleccionada.id,
         consolaSeleccionada
       )
       .then((res) => {
@@ -143,7 +148,10 @@ function HomePage() {
   const peticionDelete = async () => {
     setLoading(true);
     axios
-      .delete("http://localhost:5000/products/" + consolaSeleccionada.id)
+      .delete(
+        "https://backenddata-tflk.onrender.com/products/" +
+          consolaSeleccionada.id
+      )
       .then((res) => {
         setData(
           data.filter((consola) => consola.id !== consolaSeleccionada.id)
